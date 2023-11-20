@@ -1,6 +1,10 @@
 name: Terrascan Scan
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main  
+  pull_request:
 
 jobs:
   scan:
@@ -9,6 +13,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+
+    - name: Install Terrascan
+      run: |
+        curl -L https://github.com/accurics/terrascan/releases/latest/download/terrascan_${{ runner.os }}_amd64 -o terrascan
+        chmod +x terrascan
+        sudo mv terrascan /usr/local/bin/
 
     - name: Run Terrascan
       run: terrascan scan -i terraform
