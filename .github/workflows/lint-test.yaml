@@ -21,4 +21,4 @@ jobs:
         sudo mv terrascan /usr/local/bin/
 
     - name: Run Terrascan
-      run: terrascan scan -i terraform
+      run: cd charts/hello-world & terrascan scan -i terraform
