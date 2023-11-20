@@ -20,8 +20,5 @@ jobs:
         chmod +x terrascan
         sudo mv terrascan /usr/local/bin/
 
-    - name: Verify Terrascan Installation
-      run: terrascan --version  
-
     - name: Run Terrascan
       run: terrascan scan -i terraform
