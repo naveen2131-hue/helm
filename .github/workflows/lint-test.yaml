@@ -11,7 +11,7 @@ jobs:
       id: terrascan
       uses: tenable/terrascan-action@main
       with:
-        iac_type: 'terraform'
-        iac_version: 'v14'
-        policy_type: 'aws'
+        iac_type: 'helm'
+        iac_version: 'helm: v3'
+        policy_type: 'all'
         only_warn: false
