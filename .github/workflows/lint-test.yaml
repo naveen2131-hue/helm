@@ -26,5 +26,4 @@ jobs:
 
     - name: Run Terrascan
       run: |
-        cd charts/hello-world
         terrascan scan -i helm
