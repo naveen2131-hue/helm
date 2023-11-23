@@ -1,26 +1,28 @@
-name: Terrascan Scan
-
-on:
-  push:
-    branches:
-      - main  
-  pull_request:
+on: [push]
 
 jobs:
-  scan:
+  terrascan_job:
     runs-on: ubuntu-latest
-
+    name: terrascan-action
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Install Terrascan
-      run: |
-        curl -L https://github.com/accurics/terrascan/releases/latest/download/terrascan_${{ runner.os }}_amd64 -o terrascan
-        chmod +x terrascan
-        sudo mv terrascan /usr/local/bin/
-
     - name: Run Terrascan
-      run: |
-        cd charts/hello-world
-        /usr/local/bin/terrascan scan -i helm
+      id: terrascan
+      uses: tenable/terrascan-action@main
+      with:
+        iac_type: 'terraform'
+        iac_version: 'v14'
+        policy_type: 'aws'
+        only_warn: true
+        #scm_token: ${{ secrets.ACCESS_TOKEN }}
+        #verbose: true
+        #sarif_upload: true
+        #non_recursive:
+        #iac_dir:
+        #policy_path:
+        #skip_rules:
+        #config_path:
+        #find_vulnerabilities:
+        #webhook_url:
+        #webhook_token:
