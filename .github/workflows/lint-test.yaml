@@ -13,5 +13,5 @@ jobs:
       with:
         iac_type: 'helm'
         iac_version: 'helm: v3'
-        policy_type: 'all'
+        policy_type: 'k8s'
         only_warn: false
