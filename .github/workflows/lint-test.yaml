@@ -20,10 +20,7 @@ jobs:
         chmod +x terrascan
         sudo mv terrascan /usr/local/bin/
 
-    - name: Display Terrascan Script
-      run: |
-        cat /usr/local/bin/terrascan
-
     - name: Run Terrascan
       run: |
-        terrascan scan -i helm
+        cd charts/hello-world
+        /usr/local/bin/terrascan scan -i helm
