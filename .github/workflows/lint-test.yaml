@@ -12,6 +12,6 @@ jobs:
       uses: tenable/terrascan-action@main
       with:
         iac_type: 'helm'
-        iac_version: 'helm: v3'
-        policy_type: 'k8s'
+        iac_version: 'helm'
+        policy_type: 'all'
         only_warn: false
