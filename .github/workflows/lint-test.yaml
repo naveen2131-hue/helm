@@ -12,6 +12,3 @@ jobs:
       uses: tenable/terrascan-action@main
       with:
         iac_type: 'helm'
-        iac_dir: 'cd charts/hello-world/templates'
-        policy_type: 'all'
-        only_warn: false
