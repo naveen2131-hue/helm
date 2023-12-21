@@ -1,14 +1,20 @@
-on: [push]
+name: ci.yml
+
+on:
+  pull_request:
+    push:
+      workflow_dispatch:
 
 jobs:
-  terrascan_job:
+  Terrascan:
+    name: Terrascan Scan
     runs-on: ubuntu-latest
-    name: terrascan-action
+    container:
+      image: naveen2131/my-app:baseimage
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Run Terrascan
-      id: terrascan
-      uses: tenable/terrascan-action@main
-      with:
-        iac_type: 'helm'
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Helm Template and Scanning .
+        run: |
+          terrascan scan -i k8s
